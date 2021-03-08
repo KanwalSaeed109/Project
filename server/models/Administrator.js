@@ -6,7 +6,7 @@ const AdministratorSchema=new mongoose.Schema({
         type:String,
         required:true,
         minlength: 3,
-        //unique:true
+        unique:true
         //maxlength: 30   
     },
     password:{

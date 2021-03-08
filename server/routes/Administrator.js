@@ -41,6 +41,12 @@ router.post("/administrator/login", async(req,res)=>{
         });
 })
 
+
+//logout
+router.get('/administrator/logout',(req,res)=>{
+    res.clearCookie('access_token');
+    res.json({user:{username : ""},success : true});
+});
 //read the data of registered administrator
 router.get("/administrator",async(req,res)=>{
     try{
@@ -96,7 +102,7 @@ try{
     res.send(updateAdministrator);
 
 }catch(e){
-    res.send("administrator not found");
+    //res.send("administrator not found");
     res.status(404).send(e);
 }
 });

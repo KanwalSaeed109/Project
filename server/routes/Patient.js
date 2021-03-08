@@ -6,23 +6,25 @@ const router = express.Router();
 
 //define models schema
 const Patient = require("../models/Patient");
+const Medicine=require("../models/Medicine");
+const { route } = require('./Donor');
 
 
 //create new Patient
 router.post("/patient", async(req,res)=>{
-    const { patientname,disease,status,gender,age,critical,addDate,editDate } = req.body;
+    const { patientname,disease,medname} = req.body;
     Patient.findOne({patientname},(err,patient)=>{
         if(err)
             res.status(500).json({message : {msgBody : "Error has occured", msgError: true}});
         if(patient)
-            res.status(400).json({message : {msgBody : "patient is already present", msgError: true}});
+            res.status(201).json({message : {msgBody : "request successfully submitted", msgError: true}});
         else{
-    const newPatient = new Patient({patientname,disease,status,gender,age,critical,addDate,editDate});
+    const newPatient = new Patient({patientname,disease,medname});
     newPatient.save(err=>{
                 if(err)
                     res.status(500).json({message : {msgBody : "Error has occured", msgError: true}});
                 else
-                    res.status(201).json({message : {msgBody : "Account successfully created", msgError: false}});
+                    res.status(201).json({message : {msgBody : "Account successfully created and request submitted", msgError: false}});
             });
         }
     });  
@@ -87,4 +89,6 @@ try{
     res.status(404).send(e);
 }
 });
+
+
 module.exports=router;

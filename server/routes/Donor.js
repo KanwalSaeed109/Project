@@ -42,6 +42,12 @@ router.post("/donor/login", async(req,res)=>{
     }); 
 });
 
+//logout
+router.get('/donor/logout',(req,res)=>{
+    res.clearCookie('access_token');
+    res.json({user:{donorname : ""},success : true});
+}); 
+
 //read the data of registered donors
 router.get("/donor",async(req,res)=>{
     try{
@@ -79,7 +85,7 @@ try{
         res.send("Donor not exists");
         return res.status(400).send();
     }
-    res.send(deleteDonor);
+    //res.send(deleteDonor);
     res.send("Donor deleted");
 }catch(e){
     res.send("Donor not exists");

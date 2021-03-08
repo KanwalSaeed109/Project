@@ -8,9 +8,17 @@ const patientSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    status:{
+    mednanme:{
         type:String,
         required:true
+    }/*,
+    mg:{
+        type:String,
+        required:true
+    },
+    phoneNum:{
+        type:Number,
+        required:true,
     },
     gender:{
         type:String,
@@ -24,15 +32,25 @@ const patientSchema = new mongoose.Schema({
         type:Boolean,
         required:true
     },
-    addDate:{
-        type:Date,
-        default : Date.now
+    income:{
+        type:Number,
+        require:true
     },
-    editDate:{
-        type: Date,
-        default : Date.now
-    }
-    
+    CNIC:{
+        type:Number,
+        length:13,
+        required:true
+    },
+    profession:{
+        type:String,
+        required:true
+    },
+    status:{
+    type:String
+    },
+    Count:{
+        type:Number
+    }*/
 });
 
 
